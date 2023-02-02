@@ -1,0 +1,27 @@
+version: "3"
+services:
+  varnish:
+    image: varnish:stable
+    container_name: varnish
+    volumes:
+      - "./config/default.vcl:/etc/varnish/default.vcl"
+    ports:
+      - "80:80"
+    tmpfs:
+      - /var/lib/varnish:exec
+    environment:
+      - VARNISH_SIZE=2G
+    command: "-p default_keep=300"
+    depends_on:
+      - "php"
+  php:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: github.com/flagship-io/flagship-varnish-strategy
+    environment:
+      FS_ENV_ID:
+      FS_API_KEY:
+    container_name: php
+    ports:
+      - "8080:80"

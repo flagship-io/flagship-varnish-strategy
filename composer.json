@@ -1,0 +1,18 @@
+{
+    "name": "merki230/flagship-varnish-strategy",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Merki230\\FlagshipVarnishStrategy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Heihokon",
+            "email": "neoshark22@gmail.com"
+        }
+    ],
+    "require": {
+        "flagship-io/flagship-php-sdk": "dev-feature/tracking_manager"
+    }
+}
